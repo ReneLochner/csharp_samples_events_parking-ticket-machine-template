@@ -62,6 +62,10 @@ namespace ParkingTicketMachine.Core
             sum = 0;
             LogTicket?.Invoke(this, _ticket);
         }
+
+        public void Cancel()
+        {
+            Sum = 0;
         }
     }
 }
