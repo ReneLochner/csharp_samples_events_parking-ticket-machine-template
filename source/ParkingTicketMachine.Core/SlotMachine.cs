@@ -21,6 +21,7 @@ namespace ParkingTicketMachine.Core
         {
             this.Title = title;
         }
+
         public string CalcTotalParkingTime(int coin)
         {
             int minutes = 0;
@@ -51,6 +52,15 @@ namespace ParkingTicketMachine.Core
             ValidUntil = FastClock.Instance.Time.AddMinutes(minutes);
 
             return ValidUntil.ToString("dd.MM.yyyy HH:mm");
+        }
+
+        public void Print(string title, int sum)
+        {
+            _ticket = new Ticket();
+            _ticket.Title = title;
+            _ticket.Sum = sum;
+            sum = 0;
+            LogTicket?.Invoke(this, _ticket);
         }
         }
     }
